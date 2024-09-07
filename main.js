@@ -28,13 +28,13 @@ const projects = [
     },
 ];
 
+const predefinedColors = [
+    '#FFC2B4', '#B4FFBE', '#B4D6FF', '#FFB4DE', '#DDB4FF', '#FFFEB4', '#BEFFBC', '#BCBCFF'
+];
+
 function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+    const randomIndex = Math.floor(Math.random() * predefinedColors.length);
+    return predefinedColors[randomIndex];
 }
 
 function createProjectItem(project) {
