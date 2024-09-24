@@ -84,7 +84,11 @@ nav ul li {
     margin-bottom: 0;
 }
 
-.header-section:hover {
+/*
+    hover color change kinda unproffessional looking
+*/
+
+/* .header-section:hover {
     background-color: #e0f7fa;
 }
 
@@ -102,29 +106,4 @@ nav ul li {
 
 .footer-section:hover {
     background-color: #ffccbc;
-}
-
- /* Media Queries for Responsive Design */
-@media (max-width: 1200px) {
-    #projects {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    }
-}
-
-@media (max-width: 1200px) {
-    #projects {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-}
-
-@media (max-width: 768px) {
-    #projects {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-}
-
-@media (max-width: 480px) {
-    #projects {
-        grid-template-columns: 1fr;
-    }
-}
+} */

@@ -24,7 +24,8 @@ const projects = [
         title: "2-D Kinematic Motion",
         description: "Demonstrative 2-Dimensional kinematics simulator to assist Introductory Physics students",
         languages: ["HTML", "CSS", "JavaScript"],
-        githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io"
+        githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io",
+        executibleLink: "https://isaiahphilip.github.io/2D-Kinematic-Motion/",
     },
 ];
 
@@ -52,15 +53,31 @@ function createProjectItem(project) {
     projectLink.href = project.githubLink;
     projectLink.target = "_blank";
 
-    const projectImage = document.createElement('img');
-    projectImage.src = 'images/github_img.png'; // Path to your image
-    projectImage.alt = 'GitHub Link';
-    projectImage.style.width = '30px'; // Adjust the size as needed
-    projectImage.style.height = '30px'; // Adjust the size as needed
-    projectImage.classList.add('transparent-white'); // Add the CSS class
+    const githubImage = document.createElement('img');
+    githubImage.src = 'images/github_img.png'; // Path to your image
+    githubImage.alt = 'GitHub Link';
+    githubImage.style.width = '30px'; // Adjust the size as needed
+    githubImage.style.height = '30px'; // Adjust the size as needed
+    githubImage.classList.add('transparent-white'); // Add the CSS class
 
-    projectLink.appendChild(projectImage);
+    if(project.executibleLink !== undefined) {
+        const execLink = document.createElement('a');
+        execLink.href = project.executibleLink;
+        execLink.target = "_blank";
+        
+        const playImage = document.createElement('img');
+        playImage.src = 'images/play.jpg'; // Path to your image
+        playImage.alt = 'Executable Link';
+        playImage.style.width = '30px'; // Adjust the size as needed
+        playImage.style.height = '30px'; // Adjust the size as needed
+        playImage.style.marginRight = '10px'; // Adjust the size as needed
+        playImage.classList.add('transparent-white'); // Add the CSS class
+        projectLink.appendChild(playImage);
+    }
 
+    projectLink.appendChild(githubImage);
+    
+        
     projectItem.appendChild(projectTitle);
     projectItem.appendChild(projectLink);
 
