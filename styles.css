@@ -56,6 +56,14 @@ nav ul li {
     margin: 0 10px;
 }
 
+.experience-section .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 #projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -83,27 +91,3 @@ nav ul li {
 .project-item p {
     margin-bottom: 0;
 }
-
-/*
-    hover color change kinda unproffessional looking
-*/
-
-/* .header-section:hover {
-    background-color: #e0f7fa;
-}
-
-.about-section:hover {
-    background-color: #ffe0b2;
-}
-
-.projects-section:hover {
-    background-color: #e1bee7;
-}
-
-.contact-section:hover {
-    background-color: #c8e6c9;
-}
-
-.footer-section:hover {
-    background-color: #ffccbc;
-} */
