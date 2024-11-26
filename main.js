@@ -5,100 +5,97 @@ const projects = [
     {
         title: "Animation Lab",
         description: "Pygame Application to test 2-D character animations.",
-        languages: ["Python", "Pygame"],
-        githubLink: "https://github.com/IsaiahPhilip/Animation-Lab"
+        tools: ["Python", "Pygame"],
+        complete: false,
+        githubLink: "https://github.com/IsaiahPhilip/Animation-Lab",
+        startdate: "July 2024"
     },
     {
         title: "This Website",
         description: "Personal website to showcase projects and resume, while expanding my front-end development skills.",
-        languages: ["HTML", "CSS", "JavaScript"],
-        githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io"
+        complete: false,
+        tools: ["HTML", "CSS", "JavaScript"],
+        githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io",
+        startdate: "October 2024"
     },
     {
         title: "Spotify Wrapped App",
         description: "Codeveloped an android application that generates a 'Spotify Wrap' based on user's listening history.",
-        languages: ["Java", "XML", "Firebase"],
-        githubLink: "https://github.com/prajwalsaokar/2340Project2"
+        complete: true,
+        tools: ["Java", "XML", "Firebase"],
+        startdate: "March 2024",
+        enddate: "April 2024"
     },
     {
         title: "2-D Kinematic Motion",
         description: "Demonstrative 2-Dimensional kinematics simulator to assist Introductory Physics students",
-        languages: ["HTML", "CSS", "JavaScript"],
+        complete: true,
+        tools: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io",
         executibleLink: "https://isaiahphilip.github.io/2D-Kinematic-Motion/",
+        startdate: "January 2023",
+        enddate: "December 2023"
     },
-];
-
-const predefinedColors = [
-    '#FFC2B4', '#B4FFBE', '#B4D6FF', '#FFB4DE', '#DDB4FF', '#FFFEB4', '#BEFFBC', '#BCBCFF'
-];
-
-function getRandomColor() {
-    const randomIndex = Math.floor(Math.random() * predefinedColors.length);
-    return predefinedColors[randomIndex];
-}
-
-function createProjectItem(project) {
-    const projectItem = document.createElement('div');
-    projectItem.className = 'project-item';
-    projectItem.style.backgroundColor = getRandomColor();
-
-    const projectHeader = document.createElement('div');
-    projectHeader.className = 'project-header';
-
-    const projectTitle = document.createElement('h3');
-    projectTitle.textContent = project.title;
-
-    const projectLink = document.createElement('a');
-    projectLink.href = project.githubLink;
-    projectLink.target = "_blank";
-
-    const githubImage = document.createElement('img');
-    githubImage.src = 'images/github_img.png'; // Path to your image
-    githubImage.alt = 'GitHub Link';
-    githubImage.style.width = '30px'; // Adjust the size as needed
-    githubImage.style.height = '30px'; // Adjust the size as needed
-    githubImage.classList.add('transparent-white'); // Add the CSS class
-
-    if(project.executibleLink !== undefined) {
-        const execLink = document.createElement('a');
-        execLink.href = project.executibleLink;
-        execLink.target = "_blank";
-        
-        const playImage = document.createElement('img');
-        playImage.src = 'images/play.jpg'; // Path to your image
-        playImage.alt = 'Executable Link';
-        playImage.style.width = '30px'; // Adjust the size as needed
-        playImage.style.height = '30px'; // Adjust the size as needed
-        playImage.style.marginRight = '10px'; // Adjust the size as needed
-        playImage.classList.add('transparent-white'); // Add the CSS class
-        projectLink.appendChild(playImage);
+    {
+        title: "Gaming For Electric Power Grids",
+        description: "Designing 3D and 2D assets for an electric power grid simulation game",
+        complete: false,
+        tools: ["Unity", "Aseprite"],
+        startdate: "August 2024"
     }
-
-    projectLink.appendChild(githubImage);
-    
-        
-    projectItem.appendChild(projectTitle);
-    projectItem.appendChild(projectLink);
-
-    const projectDescription = document.createElement('p');
-    projectDescription.textContent = project.description;
-
-    // const projectLanguages = document.createElement('p');
-    // projectLanguages.textContent = `Languages: ${project.languages.join(', ')}`;
-
-    projectItem.appendChild(projectHeader);
-    projectItem.appendChild(projectDescription);
-    // projectItem.appendChild(projectLanguages);
-
-    return projectItem;
-}
+];
 
 document.addEventListener('DOMContentLoaded', () => {
-    const projectsContainer = document.getElementById('projects');
+    const projectsContainer = document.getElementById('projects-container');
+
+    if (!projectsContainer) {
+        console.error('Projects container not found');
+        return;
+    }
+
+    projects.sort((a, b) => {
+        const dateA = new Date(a.enddate || a.startdate);
+        const dateB = new Date(b.enddate || b.startdate);
+        return dateB - dateA;
+    });
+
     projects.forEach(project => {
-        const projectItem = createProjectItem(project);
-        projectsContainer.appendChild(projectItem);
+        const projectElement = document.createElement('div');
+        projectElement.classList.add('project');
+        
+        let end;
+        if(project.complete) {
+            console.log('here');
+            end = project.enddate;
+        } else {
+            console.log('there');
+            end = "present";
+        }
+
+
+        projectElement.innerHTML = `
+            <div class="project-header">
+                <h3>${project.title}</h3>
+                <span class="project-dates">
+                    ${project.startdate} ${end ? `- ${end}` : ''}
+                </span>
+            </div>
+            <p>${project.description}</p>
+            <p><strong>Tools:</strong> ${project.tools.join(', ')}</p>
+            ${project.githubLink ? `
+            <p>
+                <a href="${project.githubLink}" target="_blank">
+                    <img src="images/github_img.png" alt="GitHub Link" style="width: 24px; height: 24px;">
+                </a>
+            </p>` : ''}
+            ${project.executibleLink ? `<p><a href="${project.executibleLink}" target="_blank">Executable Link</a></p>` : ''}
+        `;
+
+        // if(!project.githubLink) {
+        //     const github = document.getElementById('github');
+        //     github.style.display = none;
+        // }
+
+        projectsContainer.appendChild(projectElement);
     });
 });
-

@@ -72,7 +72,34 @@ section h2 {
 }
 
 .project {
-    margin-bottom: 20px;
+    margin: 10px 0; /* Add margin to create space around each project item */
+    padding: 10px; /* Add padding to ensure the hover effect covers the entire area */
+    transition: background-color 0.3s, color 0.3s;
+}
+/* 
+.project:hover {
+    background-color: #b3c8cf;
+    color: white;
+}
+
+.project:hover a {
+    color: white;
+}
+
+.project:hover a img {
+    filter: invert(1);
+} 
+*/
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-dates {
+    font-size: 0.9em;
+    color: #666;
 }
 
 /* Footer styles */
