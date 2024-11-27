@@ -32,7 +32,7 @@ const projects = [
         complete: true,
         tools: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io",
-        executibleLink: "https://isaiahphilip.github.io/2D-Kinematic-Motion/",
+        executibleLink: "https://isaiahphilip.github.io/2D-Motion-Web-App/",
         startdate: "January 2023",
         enddate: "December 2023"
     },
@@ -82,13 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <p>${project.description}</p>
             <p><strong>Tools:</strong> ${project.tools.join(', ')}</p>
-            ${project.githubLink ? `
-            <p>
+            <div class="project-links">
+                ${project.githubLink ? `
                 <a href="${project.githubLink}" target="_blank">
                     <img src="images/github_img.png" alt="GitHub Link" style="width: 24px; height: 24px;">
-                </a>
-            </p>` : ''}
-            ${project.executibleLink ? `<p><a href="${project.executibleLink}" target="_blank">Executable Link</a></p>` : ''}
+                </a>` : ''}
+                ${project.executibleLink ? `
+                <a href="${project.executibleLink}" target="_blank" class="button">
+                    <img src="images/play.jpg" alt="Run Link" style="width: 24px; height: 24px;">
+                </a>` : ''}
+            </div>
         `;
 
         // if(!project.githubLink) {
