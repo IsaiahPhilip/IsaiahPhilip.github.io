@@ -5,6 +5,7 @@ const projects = [
     {
         title: "Animation Lab",
         description: "Pygame Application to test 2-D character animations.",
+        longer_description: "I want to make a simple application that allows me to test 2-D character animations. I want to be able to load in a sprite sheet and then be able to play the animation. I also want to be able to change the speed of the animation and the size of the sprite. I want to be able to load in multiple sprite sheets and switch between them. I also want to be able to change the background color and the size of the window.",
         tools: ["Python", "Pygame"],
         complete: false,
         githubLink: "https://github.com/IsaiahPhilip/Animation-Lab",
@@ -13,6 +14,7 @@ const projects = [
     {
         title: "This Website",
         description: "Personal website to showcase projects and resume, while expanding my front-end development skills.",
+        longer_description: "As you can tell I am currently working on this website. I want to make a personal website that showcases my projects and resume in a way unique to my skills. I expect to update the project section frequently so I made a json to hold each project.",
         complete: false,
         tools: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io",
@@ -22,6 +24,7 @@ const projects = [
         title: "Spotify Wrapped App",
         description: "Codeveloped an android application that generates a 'Spotify Wrap' based on user's listening history.",
         complete: true,
+        longer_description: "",
         tools: ["Java", "XML", "Firebase"],
         startdate: "March 2024",
         enddate: "April 2024"
@@ -29,6 +32,7 @@ const projects = [
     {
         title: "2-D Kinematic Motion",
         description: "Demonstrative 2-Dimensional kinematics simulator to assist Introductory Physics students",
+        longer_description: "",
         complete: true,
         tools: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io",
@@ -39,14 +43,20 @@ const projects = [
     {
         title: "Gaming For Electric Power Grids",
         description: "Designing 3D and 2D assets for an electric power grid simulation game",
+        longer_description: "",
         complete: false,
         tools: ["Unity", "Aseprite"],
         startdate: "August 2024"
     }
 ];
 
+let show_clicked = false;
+let sfx_clicks = 0;
+let labelText = '';
+
 document.addEventListener('DOMContentLoaded', () => {
     const projectsContainer = document.getElementById('projects-container');
+    const clickSound = document.getElementById('click-sound');
 
     if (!projectsContainer) {
         console.error('Projects container not found');
@@ -65,10 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let end;
         if(project.complete) {
-            console.log('here');
             end = project.enddate;
         } else {
-            console.log('there');
             end = "present";
         }
 
@@ -81,23 +89,75 @@ document.addEventListener('DOMContentLoaded', () => {
                 </span>
             </div>
             <p>${project.description}</p>
-            <p><strong>Tools:</strong> ${project.tools.join(', ')}</p>
-            <div class="project-links">
-                ${project.githubLink ? `
-                <a href="${project.githubLink}" target="_blank">
-                    <img src="images/github_img.png" alt="GitHub Link" style="width: 24px; height: 24px;">
-                </a>` : ''}
-                ${project.executibleLink ? `
-                <a href="${project.executibleLink}" target="_blank" class="button">
-                    <img src="images/play.jpg" alt="Run Link" style="width: 24px; height: 24px;">
-                </a>` : ''}
+            <div class="longer-description" style="display: none;">
+                <p>${project.longer_description}</p>
+                <p><strong>Tools:</strong> ${project.tools.join(', ')}</p>
+                <div class="project-links">
+                    ${project.githubLink ? `
+                    <a href="${project.githubLink}" target="_blank">
+                        <img src="images/github_img.png" alt="GitHub Link" style="width: 30px; height: 30px; padding:10px;">
+                    </a>` : ''}
+                    ${project.executibleLink ? `
+                    <a href="${project.executibleLink}" target="_blank" class="button">
+                        <img src="images/play.png" alt="Run Link" style="width: 30px; height: 30px; padding:10px;">
+                    </a>` : ''}
+                </div>
             </div>
+            <button class="show-more">
+                &#x25BC; <span class="show-more-text">Show More</span> &#x25BC;
+            </button>
+            
         `;
 
-        // if(!project.githubLink) {
-        //     const github = document.getElementById('github');
-        //     github.style.display = none;
-        // }
+        const showMoreButton = projectElement.querySelector('.show-more');
+        const longerDescription = projectElement.querySelector('.longer-description');
+
+        showMoreButton.addEventListener('click', () => {
+            const toggleSoundCheckbox = document.getElementById('toggle-sound');
+            const toggleSoundLabel = document.getElementById('toggle-sound-label');
+            if(!show_clicked) {
+                toggleSoundLabel.style.display = 'inline'; // Reveal the toggle sound feature
+                show_clicked = true;
+            }
+            if (longerDescription.style.display === 'none') {
+                console.log(toggleSoundCheckbox.checked, show_clicked);
+                if (show_clicked && toggleSoundCheckbox.checked) {
+                    sfx_clicks++;
+                    console.log(sfx_clicks);
+                    if(sfx_clicks==1){
+                        toggleSoundLabel.innerHTML = '<input type="checkbox" id="toggle-sound"> huh... maybe try again?';
+                        toggleSoundCheckbox.checked = false;
+                    }
+                    if(sfx_clicks==2){
+                        toggleSoundLabel.innerHTML = '<input type="checkbox" id="toggle-sound"> hmmm';
+                        toggleSoundCheckbox.checked = false;
+                    }
+                    if(sfx_clicks==3){
+                        toggleSoundLabel.innerHTML = '<input type="checkbox" id="toggle-sound"> guess your going to have to live with it';
+                        toggleSoundCheckbox.checked = false;
+                    }
+                    if(sfx_clicks==4){
+                        toggleSoundLabel.innerHTML = '<input type="checkbox" id="toggle-sound"> is it that bad?';
+                        toggleSoundCheckbox.checked = false;
+                    }
+                    if(sfx_clicks==5){
+                        toggleSoundLabel.innerHTML = '<input type="checkbox" id="toggle-sound"> sorry...';
+                        toggleSoundCheckbox.checked = false;
+                    }
+                    if(sfx_clicks>5){
+                        toggleSoundCheckbox.checked = false;
+                    }
+                    clickSound.play(); // Play the sound if checkbox is checked
+                } else {
+                    clickSound.play(); // Play the sound if checkbox is not checked
+                }
+                longerDescription.style.display = 'block';
+                showMoreButton.innerHTML = '&#x25B2; <span class="show-more-text">Show Less</span> &#x25B2;'; // Up chevron
+            } else {
+                longerDescription.style.display = 'none';
+                showMoreButton.innerHTML = '&#x25BC; <span class="show-more-text">Show More</span> &#x25BC;'; // Down chevron
+            }
+        });
 
         projectsContainer.appendChild(projectElement);
     });

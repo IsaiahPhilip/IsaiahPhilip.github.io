@@ -1,15 +1,47 @@
 /* Base styles */
+@font-face {
+    font-family: 'Frutiger';
+    src: url('fonts/Frutiger.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Frutiger';
+    src: url('fonts/Frutiger_bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  .show-more {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.show-more-text {
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Frutiger', Arial, sans-serif;
     line-height: 1.6;
     background-color: #f1f0e8;
     color: #333;
+    scroll-behavior: smooth;
 }
 
 /* Header styles */
 header {
     background-color: #89a8b2;
+    font-family: 'Frutiger';
     color: #f1f0e8;
     padding: 40px 20px;
     text-align: center;

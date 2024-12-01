@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <audio id="click-sound" src="sounds/open_chest.mp3" preload="auto"></audio>
     <header>
         <div class="header-content">
             <h1>Isaiah Philip</h1>
@@ -35,6 +36,9 @@
 
         <section id="projects">
             <h2>Projects</h2>
+            <label id="toggle-sound-label" style="display: none;">
+                <input type="checkbox" id="toggle-sound"> Toggle to shut off annoying project sound
+            </label>
             <!-- <div class="project">
                 <h3>Spotify Wrapped Mobile App</h3>
                 <p>Created a mobile app that provides unique listening insights using Spotify analytics.</p>
