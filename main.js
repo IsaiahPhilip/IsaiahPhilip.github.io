@@ -1,3 +1,48 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalCaption = document.getElementById('modal-caption');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('.gallery-image');
+            const description = item.querySelector('.gallery-description').textContent;
+            modal.style.display = 'block';
+            modalImage.src = img.src;
+            modalCaption.textContent = description;
+        });
+    });
+
+    window.closeModal = function() {
+        modal.style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    let currentImageIndex = 0;
+    const images = document.querySelectorAll('.carousel-image');
+    images[currentImageIndex].classList.add('active');
+
+    window.prevImage = function() {
+        images[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        images[currentImageIndex].classList.add('active');
+    };
+
+    window.nextImage = function() {
+        images[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        images[currentImageIndex].classList.add('active');
+    };
+});
+
 // Define the projects data structure
 // should add functionality to have other external links (ie. project websites and associated presentations)
 // also should add functionality so that only one-two rows should should be displayed at a time, with a button to show more
@@ -14,7 +59,7 @@ const projects = [
     {
         title: "This Website",
         description: "Personal website to showcase projects and resume, while expanding my front-end development skills.",
-        longer_description: "As you can tell I am currently working on this website. I want to make a personal website that showcases my projects and resume in a way unique to my skills. I expect to update the project section frequently so I made a json to hold each project.",
+        longer_description: "As you can tell I am currently working on this website. I want to make a personal website that showcases my projects and resume in a way unique to my skills. I expect to update the project section frequently so I made a json object to hold each project.",
         complete: false,
         tools: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io",

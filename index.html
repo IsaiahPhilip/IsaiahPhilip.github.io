@@ -27,17 +27,29 @@
     <main>
         <section id="about">
             <h2>About Me</h2>
-            <p>
-                Hello! I'm Isaiah, a Computational Media student at Georgia Tech with a passion for designing innovative 
-                software and exploring the creative side of technology. My academic and personal projects reflect my 
-                commitment to solving complex problems and delivering impactful solutions.
-            </p>
+            <div id="about-container" class="about-container">
+                <div id="about-body" class="about-body"> 
+                    <p>
+                        Hello! I'm Isaiah, a Computational Media student at Georgia Tech with a passion for software development and 
+                        creative problem-solving. I enjoy building projects that combine my interests in technology, design, and storytelling. 
+                        I'm currently seeking internship opportunities for Summer 2024.
+                    </p>
+                </div>
+                <div id="about-image" class="about-image" class="carousel"> 
+                    <img src="images/me1.jpeg" alt="Isaiah's Photo 1" class="carousel-image">
+                    <img src="images/me2.jpeg" alt="Isaiah's Photo 2" class="carousel-image">
+                    <img src="images/me3.jpeg" alt="Isaiah's Photo 3" class="carousel-image">
+                    <!-- Add more images as needed -->
+                    <button class="carousel-button prev" onclick="prevImage()">&#10094;</button>
+                    <button class="carousel-button next" onclick="nextImage()">&#10095;</button>
+                </div>
+            </div>
         </section>
 
         <section id="projects">
             <h2>Projects</h2>
             <label id="toggle-sound-label" style="display: none;">
-                <input type="checkbox" id="toggle-sound"> Toggle to shut off annoying project sound
+                <input type="checkbox" id="toggle-sound"> Toggle to shut off annoying 'show more' sound
             </label>
             <!-- <div class="project">
                 <h3>Spotify Wrapped Mobile App</h3>
@@ -57,6 +69,47 @@
             <div id="projects-container"></div>
         </section>
 
+        <section id="art-gallery">
+            <h2>Art?</h2>
+            <div id="gallery-container" class="gallery-container">
+                <div class="gallery-item">
+                    <img src="images/vomit1.jpeg" alt="Art Piece 1" class="gallery-image">
+                    <p class="gallery-description">hear no evil </p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/vomit2.jpeg" alt="Art Piece 2" class="gallery-image">
+                    <p class="gallery-description">tried digital</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/vomit3.jpeg" alt="Art Piece 3" class="gallery-image">
+                    <p class="gallery-description">pretty cool tbh</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/vomit4.jpeg" alt="Art Piece 3" class="gallery-image">
+                    <p class="gallery-description">nose goes</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/vomit5.jpeg" alt="Art Piece 3" class="gallery-image">
+                    <p class="gallery-description">ahhhh!</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/vomit6.jpeg" alt="Art Piece 3" class="gallery-image">
+                    <p class="gallery-description">long stride</p>
+                </div>
+                <!-- <div class="gallery-item">
+                    <img src="images/vomit7.jpeg" alt="Art Piece 3" class="gallery-image">
+                    <p class="gallery-description">proportional pete</p>
+                </div> -->
+            </div>
+        </section>
+
+        <!-- Modal Structure -->
+        <div id="modal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modal-image">
+            <div id="modal-caption"></div>
+        </div>
+
         <section id="resume">
             <h2>Resume</h2>
             <p>Download my resume <a href="November_CV.pdf" download>here</a>.</p>
@@ -71,7 +124,6 @@
         </section>
     <script src="main.js"></script>
     </main>
-
     <footer>
         <p>&copy; 2024 Isaiah Philip</p>
     </footer>

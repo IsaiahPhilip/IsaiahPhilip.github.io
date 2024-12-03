@@ -13,6 +13,78 @@
     font-style: normal;
   }
 
+  /* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+#modal-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+  #gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.gallery-item {
+    flex: 1 1 calc(16.6667% - 40px); /* Adjust the width as needed */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Optional: add rounded corners */
+}
+
+.gallery-description {
+    margin-top: 10px;
+    color: #333;
+}
+
   .show-more {
     background: none;
     border: none;
@@ -106,20 +178,61 @@ section h2 {
 .project {
     transition: background-color 0.3s, color 0.3s;
 }
-/* 
-.project:hover {
-    background-color: #b3c8cf;
-    color: white;
+
+#about-container {
+    display: flex;
+    align-items: center;
 }
 
-.project:hover a {
-    color: white;
+#about-body {
+    flex: 1;
+    text-align: center; /* Center the text horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the text vertically */
 }
 
-.project:hover a img {
-    filter: invert(1);
-} 
-*/
+#about-image {
+    flex: 0 0 auto;
+    margin-left: 20px;
+    position: relative;
+    width: 300px; /* Adjust the size as needed */
+    height: 300px; /* Adjust the size as needed */
+    overflow: hidden;
+}
+
+
+.carousel-image {
+    width: 100%;
+    height: auto;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.carousel-image.active {
+    display: block;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel-button.prev {
+    left: 0;
+}
+
+.carousel-button.next {
+    right: 0;
+}
 
 .project-header {
     display: flex;
@@ -131,6 +244,8 @@ section h2 {
     font-size: 0.9em;
     color: #666;
 }
+
+
 
 /* Footer styles */
 footer {
