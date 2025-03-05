@@ -47,20 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
 // should add functionality to have other external links (ie. project websites and associated presentations)
 // also should add functionality so that only one-two rows should should be displayed at a time, with a button to show more
 const projects = [
-    {
-        title: "Animation Lab",
-        description: "Pygame Application to test 2-D character animations.",
-        longer_description: "I want to make a simple application that allows me to test 2-D character animations. I want to be able to load in a sprite sheet and then be able to play the animation. I also want to be able to change the speed of the animation and the size of the sprite. I want to be able to load in multiple sprite sheets and switch between them. I also want to be able to change the background color and the size of the window.",
-        tools: ["Python", "Pygame"],
-        complete: false,
-        githubLink: "https://github.com/IsaiahPhilip/Animation-Lab",
-        startdate: "July 2024"
-    },
+    // {
+    //     title: "Animation Lab",
+    //     description: "Pygame Application to test 2-D character animations.",
+    //     longer_description: "I want to make a simple application that allows me to test 2-D character animations. I want to be able to load in a sprite sheet and then be able to play the animation. I also want to be able to change the speed of the animation and the size of the sprite. I want to be able to load in multiple sprite sheets and switch between them. I also want to be able to change the background color and the size of the window.",
+    //     tools: ["Python", "Pygame"],
+    //     complete: false,
+    //     githubLink: "https://github.com/IsaiahPhilip/Animation-Lab",
+    //     startdate: "July 2024"
+    // },
     {
         title: "This Website",
         description: "Personal website to showcase projects and resume, while expanding my front-end development skills.",
         longer_description: "As you can tell I am currently working on this website. I want to make a personal website that showcases my projects and resume in a way unique to my skills. I expect to update the project section frequently so I made a json object to hold each project.",
-        complete: false,
+        complete: true,
         tools: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io",
         startdate: "October 2024"
@@ -92,6 +92,24 @@ const projects = [
         complete: false,
         tools: ["Unity", "Aseprite"],
         startdate: "August 2024"
+    },
+    {
+        title: "Blender Comic",
+        description: "Created digital comic",
+        longer_description: "",
+        complete: true,
+        tools: ["Photoshop", "Blender"],
+        startdate: "January 2025",
+    },
+    {
+        title: "ShotViz",
+        description: "Developed and Designed interactive webapp capable of returning shooting average at a given position on a basketball court based on user input",
+        longer_description: "",
+        complete: true,
+        githubLink: "https://github.com/IsaiahPhilip/Hackylitics2025",
+        executibleLink: "",
+        tools: ["React", "Axios", "Figma"],
+        startdate: "February 2025",
     }
 ];
 
