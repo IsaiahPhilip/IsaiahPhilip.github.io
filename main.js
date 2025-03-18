@@ -153,6 +153,15 @@ document.addEventListener('DOMContentLoaded', () => {
     projects.sort((a, b) => {
         const dateA = new Date(a.enddate || a.startdate);
         const dateB = new Date(b.enddate || b.startdate);
+
+        // Check if either project is ongoing (no end date)
+        if (!a.enddate && b.enddate) {
+            return -1; // a is ongoing, b is not, so a comes first
+        }
+        if (a.enddate && !b.enddate) {
+            return 1; // b is ongoing, a is not, so b comes first
+        }
+
         return dateB - dateA;
     });
 
