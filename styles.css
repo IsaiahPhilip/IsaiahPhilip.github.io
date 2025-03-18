@@ -255,3 +255,44 @@ footer {
     color: #333;
     font-size: 0.9rem;
 }
+
+/* Comic Page Styles */
+.pdf-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f0e8;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f0e8;
+}
+
+/* for entire longer description not just words */
+.longer-description {
+    max-width: 600px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the description */
+    padding: 10px;
+    background-color: #f9f9f9; /* Optional: add a background color */
+    border-radius: 5px; /* Optional: add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+}
+
+.work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.work-dates {
+    font-size: 0.9em;
+    color: #666;
+}

@@ -60,7 +60,7 @@ const projects = [
         title: "This Website",
         description: "Personal website to showcase projects and resume, while expanding my front-end development skills.",
         longer_description: "As you can tell I am currently working on this website. I want to make a personal website that showcases my projects and resume in a way unique to my skills. I expect to update the project section frequently so I made a json object to hold each project.",
-        complete: true,
+        complete: false,
         tools: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io",
         startdate: "October 2024"
@@ -95,22 +95,46 @@ const projects = [
     },
     {
         title: "Blender Comic",
-        description: "Created digital comic",
-        longer_description: "",
+        description: "Created digital, mixed media comic",
+        longer_description: "Created a digital comic using pen and ink drawings for characters, blender to build and render backgrounds, and photoshop for paneling",
+        executibleLink: "comic.html",
         complete: true,
         tools: ["Photoshop", "Blender"],
         startdate: "January 2025",
+        enddate: "March 2025"
     },
     {
         title: "ShotViz",
-        description: "Developed and Designed interactive webapp capable of returning shooting average at a given position on a basketball court based on user input",
-        longer_description: "",
-        complete: true,
+        description: "Codeveloped and designed interactive basketball analytics webapp",
+        longer_description: "Codeveloped and designed interactive webapp capable of returning shooting average at a given position on a basketball court based on user input. Codewise, I mainly worked in frontend with React, CSS, and JS. Design-wise I used figma to create the basketball court w/ vector art",
+        complete: false,
         githubLink: "https://github.com/IsaiahPhilip/Hackylitics2025",
         executibleLink: "",
         tools: ["React", "Axios", "Figma"],
         startdate: "February 2025",
     }
+];
+
+const workExperiences = [
+    {
+        title: "Research Assistant - Georgia Institute of Technology (Whiteley Lab)",
+        company: "",
+        description: "",
+        longer_description: "",
+        complete: false,
+        tools: ["Python", "Bash", "Git", "PACE"],
+        startdate: "February 2025"
+    },
+    {
+        title: "Research Assistant - Georgia State University",
+        company: "",
+        description: "",
+        longer_description: "",
+        complete: true,
+        tools: ["HTML", "Canvas", "CSS", "JavaScript"],
+        startdate: "November 2022",
+        enddate: "December 2023"
+    },
 ];
 
 let show_clicked = false;
@@ -223,5 +247,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         projectsContainer.appendChild(projectElement);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const workContainer = document.getElementById('work-container');
+
+    workExperiences.forEach(work => {
+        const workElement = document.createElement('div');
+        workElement.classList.add('work');
+
+        let end;
+        if (work.complete) {
+            end = work.enddate;
+        } else {
+            end = "present";
+        }
+
+        workElement.innerHTML = `
+            <div class="work-header">
+                <h3>${work.title}</h3>
+                <span class="work-company">${work.company}</span>
+                <span class="work-dates">
+                    ${work.startdate} ${end ? `- ${end}` : ''}
+                </span>
+            </div>
+            <p>${work.description}</p>
+            <div class="longer-description" style="display: none;">
+                <p>${work.longer_description}</p>
+                <p><strong>Tools:</strong> ${work.tools.join(', ')}</p>
+            </div>
+            <button class="show-more">
+                &#x25BC; <span class="show-more-text">Show More</span> &#x25BC;
+            </button>
+        `;
+
+        const showMoreButton = workElement.querySelector('.show-more');
+        const longerDescription = workElement.querySelector('.longer-description');
+
+        showMoreButton.addEventListener('click', () => {
+            if (longerDescription.style.display === 'none') {
+                longerDescription.style.display = 'block';
+                showMoreButton.innerHTML = '&#x25B2; <span class="show-more-text">Show Less</span> &#x25B2;';
+            } else {
+                longerDescription.style.display = 'none';
+                showMoreButton.innerHTML = '&#x25BC; <span class="show-more-text">Show More</span> &#x25BC;';
+            }
+        });
+
+        workContainer.appendChild(workElement);
     });
 });
