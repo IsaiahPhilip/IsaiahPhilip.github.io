@@ -120,7 +120,7 @@ const workExperiences = [
         title: "Research Assistant - Georgia Institute of Technology (Whiteley Lab)",
         company: "",
         description: "",
-        longer_description: "",
+        longer_description: "At Georgia Tech’s Whiteley Lab, I co-led the development of a Python-based GUI application that allows researchers to browse, filter, and manage genome data from thousands of Pseudomonas Aeruginosa samples. I also automated the parsing and mapping of genome data using Bash scripts on the PACE high-performance computing cluster. Currently, I'm building the lab’s official website using Framer to improve public engagement and accessibility of our research.",
         complete: false,
         tools: ["Python", "Bash", "Git", "PACE"],
         startdate: "February 2025"
@@ -129,7 +129,7 @@ const workExperiences = [
         title: "Research Assistant - Georgia State University",
         company: "",
         description: "",
-        longer_description: "",
+        longer_description: "I created a browser-based 2D physics simulator designed to support student understanding in introductory physics courses. In addition to developing the tool, I presented our work through an academic poster that detailed the simulator’s technical design, educational goals, and interactive features. The project strengthened my front-end development skills and understanding of educational technology.",
         complete: true,
         tools: ["HTML", "Canvas", "CSS", "JavaScript"],
         startdate: "November 2022",
@@ -306,4 +306,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
         workContainer.appendChild(workElement);
     });
+});
+
+const carouselStates = {};
+
+function showArtImage(carouselNum, index) {
+    const carousel = document.querySelector(`.art-carousel[data-carousel="${carouselNum}"]`);
+    const images = carousel.querySelectorAll('.carousel-image');
+    images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+    });
+    carouselStates[carouselNum] = index;
+}
+
+window.prevArtImage = function(carouselNum) {
+    const carousel = document.querySelector(`.art-carousel[data-carousel="${carouselNum}"]`);
+    const images = carousel.querySelectorAll('.carousel-image');
+    let idx = carouselStates[carouselNum] ?? 0;
+    idx = (idx - 1 + images.length) % images.length;
+    showArtImage(carouselNum, idx);
+};
+
+window.nextArtImage = function(carouselNum) {
+    const carousel = document.querySelector(`.art-carousel[data-carousel="${carouselNum}"]`);
+    const images = carousel.querySelectorAll('.carousel-image');
+    let idx = carouselStates[carouselNum] ?? 0;
+    idx = (idx + 1) % images.length;
+    showArtImage(carouselNum, idx);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('art-manifest.json')
+        .then(response => response.json())
+        .then(data => {
+            const galleryContainer = document.getElementById('gallery-container');
+            let carouselNum = 1;
+            for (const [series, images] of Object.entries(data)) {
+                const carousel = document.createElement('div');
+                carousel.className = 'art-carousel';
+                carousel.dataset.carousel = carouselNum;
+
+                images.forEach((imgSrc, idx) => {
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.alt = `${series} Image ${idx + 1}`;
+                    img.className = 'carousel-image' + (idx === 0 ? ' active' : '');
+                    carousel.appendChild(img);
+                });
+
+                carousel.innerHTML += `
+                    <button class="carousel-button prev" onclick="prevArtImage(${carouselNum})">&#10094;</button>
+                    <button class="carousel-button next" onclick="nextArtImage(${carouselNum})">&#10095;</button>
+                    <p class="carousel-caption">${series}</p>
+                `;
+
+                galleryContainer.appendChild(carousel);
+                carouselNum++;
+            }
+
+            // Initialize carousel states
+            document.querySelectorAll('.art-carousel').forEach((carousel) => {
+                carouselStates[carousel.dataset.carousel] = 0;
+                showArtImage(carousel.dataset.carousel, 0);
+            });
+        });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    let currentImageIndex = 0;
+    const aboutImageContainer = document.getElementById('about-image');
+    const images = aboutImageContainer.querySelectorAll('.carousel-image');
+    images[currentImageIndex].classList.add('active');
+
+    window.prevImage = function() {
+        images[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        images[currentImageIndex].classList.add('active');
+    };
+
+    window.nextImage = function() {
+        images[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        images[currentImageIndex].classList.add('active');
+    };
 });

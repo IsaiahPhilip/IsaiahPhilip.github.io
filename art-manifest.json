@@ -1,0 +1,52 @@
+{
+  "Comic": [
+    "images/art/comic/comicsketch_1.jpg",
+    "images/art/comic/comicsketch_2.jpg",
+    "images/art/comic/comicsketch_3.jpg",
+    "images/art/comic/comicsketch_4.jpg",
+    "images/art/comic/comicsketch_5.jpg",
+    "images/art/comic/comicsketch_6.jpg",
+    "images/art/comic/comicsketch_7.jpg",
+    "images/art/comic/comicsketch_8.jpg",
+    "images/art/comic/comicsketch_9.jpg",
+    "images/art/comic/comicsketch_10.jpg",
+    "images/art/comic/comicsketch_11.jpg",
+    "images/art/comic/comicsketch_12.jpg",
+    "images/art/comic/comicsketch_13.jpg",
+    "images/art/comic/comicsketch_14.jpg",
+    "images/art/comic/comicsketch_15.jpg"
+  ],
+  "Doodles": [
+    "images/art/doodles/doodle_1.jpg",
+    "images/art/doodles/doodle_2.jpg",
+    "images/art/doodles/doodle_3.jpg",
+    "images/art/doodles/doodle_4.jpg",
+    "images/art/doodles/doodle_5.jpg",
+    "images/art/doodles/doodle_6.jpg",
+    "images/art/doodles/doodle_7.jpg",
+    "images/art/doodles/doodle_8.jpg"
+  ],
+  "Things": [
+    "images/art/things/thing_1.jpg",
+    "images/art/things/thing_2.jpg",
+    "images/art/things/thing_3.jpg",
+    "images/art/things/thing_4.jpg",
+    "images/art/things/thing_5.jpg",
+    "images/art/things/thing_6.jpg",
+    "images/art/things/thing_7.jpg",
+    "images/art/things/thing_8.jpg",
+    "images/art/things/thing_9.jpg",
+    "images/art/things/thing_10.jpg",
+    "images/art/things/thing_11.jpg",
+    "images/art/things/thing_12.jpg"
+  ],
+  "Concept": [
+    "images/art/VGDev/conceptart_1.jpg",
+    "images/art/VGDev/conceptart_2.jpg",
+    "images/art/VGDev/conceptart_3.jpg",
+    "images/art/VGDev/conceptart_4.jpg",
+    "images/art/VGDev/conceptart_5.jpg",
+    "images/art/VGDev/conceptart_6.jpg",
+    "images/art/VGDev/conceptart_7.jpg"
+  ]
+}
