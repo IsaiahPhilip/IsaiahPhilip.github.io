@@ -47,23 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
 // should add functionality to have other external links (ie. project websites and associated presentations)
 // also should add functionality so that only one-two rows should should be displayed at a time, with a button to show more
 const projects = [
-    // {
-    //     title: "Animation Lab",
-    //     description: "Pygame Application to test 2-D character animations.",
-    //     longer_description: "I want to make a simple application that allows me to test 2-D character animations. I want to be able to load in a sprite sheet and then be able to play the animation. I also want to be able to change the speed of the animation and the size of the sprite. I want to be able to load in multiple sprite sheets and switch between them. I also want to be able to change the background color and the size of the window.",
-    //     tools: ["Python", "Pygame"],
-    //     complete: false,
-    //     githubLink: "https://github.com/IsaiahPhilip/Animation-Lab",
-    //     startdate: "July 2024"
-    // },
     {
         title: "This Website",
         description: "Personal website to showcase projects and resume, while expanding my front-end development skills.",
         longer_description: "As you can tell I am currently working on this website. I want to make a personal website that showcases my projects and resume in a way unique to my skills. I expect to update the project section frequently so I made a json object to hold each project.",
-        complete: false,
+        complete: true,
         tools: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://github.com/IsaiahPhilip/IsaiahPhilip.github.io",
-        startdate: "October 2024"
+        startdate: "October 2024",
+        // enddate: "October 2024"
     },
     {
         title: "Spotify Wrapped App",
@@ -104,14 +96,26 @@ const projects = [
         enddate: "March 2025"
     },
     {
+        title: "CH1MP",
+        description: "Developed a 2D side-scrolling action game for the Game Boy Advance using C",
+        longer_description: "Implemented core gameplay systems including collision detection, gravity physics, animation handling, parallax scrolling, and basic enemy AI",
+        executibleLink: "https://gbagt.org/gallery/player.html?project=CH1MP",
+        githubLink: "https://github.com/IsaiahPhilip/gbafinal",
+        complete: true,
+        tools: ["C", "Aseprite"],
+        startdate: "March 2025",
+        enddate: "April 2025"
+    },
+    {
         title: "ShotViz",
         description: "Codeveloped and designed interactive basketball analytics webapp",
         longer_description: "Codeveloped and designed interactive webapp capable of returning shooting average at a given position on a basketball court based on user input. Codewise, I mainly worked in frontend with React, CSS, and JS. Design-wise I used figma to create the basketball court w/ vector art",
-        complete: false,
+        complete: true,
         githubLink: "https://github.com/IsaiahPhilip/Hackylitics2025",
         executibleLink: "",
         tools: ["React", "Axios", "Figma"],
         startdate: "February 2025",
+        // enddate: "February 2025",
     }
 ];
 
@@ -155,10 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const dateB = new Date(b.enddate || b.startdate);
 
         // Check if either project is ongoing (no end date)
-        if (!a.enddate && b.enddate) {
+        if (!a.complete && b.complete) {
             return -1; // a is ongoing, b is not, so a comes first
         }
-        if (a.enddate && !b.enddate) {
+        if (a.complete && !b.complete) {
             return 1; // b is ongoing, a is not, so b comes first
         }
 
